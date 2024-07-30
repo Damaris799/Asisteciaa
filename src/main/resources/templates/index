@@ -1,0 +1,4 @@
+<html lang="en" xmlns="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+</html>
