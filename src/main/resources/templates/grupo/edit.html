@@ -1,10 +1,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="/Layouts/_mainlayout">
+<div layout:fragment="content">
 
 <h1 >Editar grupo</h1>
- <div layout:fragment="content">
-<form th:action="@{/Grupos/save}" th:object="${grupo}" method="post" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<form th:action="@{/Grupos/save}" th:object="${grupo}" method="post"  >
  <input type="hidden" th:field="*{id}">
  <div class="row">
   <div class="col-md-6">
@@ -28,4 +29,3 @@
 </form>
 </div>
  </html>
- </div>

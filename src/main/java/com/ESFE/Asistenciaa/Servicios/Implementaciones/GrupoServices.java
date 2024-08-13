@@ -13,10 +13,6 @@ import java.util.Optional;
 
 @Service
 public class GrupoServices implements IGrupoServices {
-    @Override
-    public Optional<Grupo> BuscarPorId() {
-        return Optional.empty();
-    }
 
     @Autowired
     private IGrupoRepository grupoRepository;
@@ -32,13 +28,13 @@ public class GrupoServices implements IGrupoServices {
     }
 
     @Override
-    public Optional<Grupo> BuscarPorId(Integer id) {
-        return grupoRepository.findById(id);
+    public Grupo CrearOeditar(Grupo grupo) {
+        return grupoRepository.save(grupo);
     }
 
     @Override
-    public Grupo CrearOeditar(Grupo grupo) {
-        return grupoRepository.save(grupo);
+    public Optional<Grupo> BuscarPorId(Integer id) {
+        return grupoRepository.findById(id);
     }
 
     @Override
