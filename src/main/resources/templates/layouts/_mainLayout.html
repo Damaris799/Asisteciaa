@@ -4,7 +4,7 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}">
 
-    <link rel="stylesheet" th:src="@{/plugins/sweetalert2/sweetalert2.all.min.css}">
+    <script th:src="@{/plugins/sweetalert2/sweetalert2.all.min.js}"></script>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -33,8 +33,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="index3.html" class="nav-link">Home</a>
             </li>
+
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
+                <a th:href="@{/Grupos}" class="nav-link"> Grupos</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a th:href="@{/Docentes}" class="nav-link">Docentes</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a th:href="@{/docenteGrupos}" class="nav-link">Docentes Grupos</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a th:href="@{/Estudiantes}" class="nav-link">Estudiantes</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a th:href="@{/estudianteGrupos}" class="nav-link">Estudiantes Grupos</a>
             </li>
         </ul>
 
@@ -177,7 +190,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <div sec:authorize="isAuthenticated()" class="small">
+                        <span class="text-light d-block" sec:authentication="name" style="text-transform: uppercase;"></span>
+
+                    </div>
                 </div>
             </div>
 
@@ -222,12 +238,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Simple Link
-                                <span class="right badge badge-danger">New</span>
-                            </p>
+                        <a href="@{/logout}" class="nav-link">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            <p>Cerrar Sesión</p>
                         </a>
                     </li>
                 </ul>
